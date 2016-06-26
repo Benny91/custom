@@ -87,7 +87,7 @@
 	        });
         }
 
-	//triviaAdd();
+	triviaAdd();
 
         // Example code for a bot command:
         bot.commands.answerCommand = {
