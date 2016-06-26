@@ -34,10 +34,10 @@
 	        $.ajax({
 	        	url: '//jservice.io/api/random?count=1',
 	        	type: 'GET',
-	        	crossDomain: true,
 	        	data: {},
-	        	dataType: 'json',
+	        	dataType: 'jsonp',
 	        	success: function(data) {
+	        		console.log(data);
 	        		clearTimeout(TRIVIA);
 				dzero = data[0];
 				dqst = dzero.question;
