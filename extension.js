@@ -38,8 +38,8 @@
 	        	dataType: 'json',
 	        	success: function(data) {
 	        		clearTimeout(TRIVIA);
-                    dzero = data[0];
-                    dqst = dzero.question;
+					dzero = data[0];
+					dqst = dzero.question;
 	        		if (dqst === '' || dqst.match(/seen here/i) || dqst.match(/heard here/i) || dqst.match(/depicted here/i) || dqst.length > 175 || dqst === '=') {
 	        			TRIVIA = setTimeout(function() {
 	        				triviaAdd();
@@ -138,7 +138,7 @@
     //Change the bots default settings and make sure they are loaded on launch
 
     localStorage.setItem("basicBotsettings", JSON.stringify({
-      pointsarray = [['Bennyboobies', 0]];
+      pointsarray = [['Bennyboobies', 0]],
       botName: "ChillinBot",
       language: "english",
       chatLink: "https://rawgit.com/Benny91/source/master/lang/en.json",
