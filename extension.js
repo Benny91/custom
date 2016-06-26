@@ -32,7 +32,7 @@
 
         function triviaAdd() {
 	        $.ajax({
-	        	url: '//jservice.io/api/random?count=1',
+	        	url: 'http://jservice.io/api/random?count=1',
 	        	type: 'GET',
 	        	data: {},
 	        	dataType: 'jsonp',
