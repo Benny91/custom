@@ -24,23 +24,33 @@
           window.bot.chatUtilities.spam.push(spamWords[i]);
         }
         
-	//create popup window
+	//create iframe
 	var domain = 'http://jservice.io/api/random?count=1';
-	var myPopup = window.open(domain,'myWindow');
+	$('<iframe id="myFrame" src="' + domain + '"></iframe>').appendTo('body');
+
+	// Get reference to the iframe element
+	var iframe = $('#myFrame').get(0);
 	
 	//periodical message sender
 	setInterval(function(){
 		var message = 'Hello!  The time is: ' + (new Date().getTime());
 		console.log('blog.local:  sending message:  ' + message);
-		myPopup.postMessage(message,domain); //send the message and target URI
+		iframe.postMessage(message,domain); //send the message and target URI
 	},6000);
 	
 	//listen to holla back
-	window.addEventListener('message',function(event) {
+	$(window).on('message',function(event) {
 		console.log(event.origin);
-		if(event.origin !== 'http://jservice.io/api/random?count=1') return;
-		console.log('received response:  ',event.data);
-	},false);
+		if(event.origin !== 'https://plug.dj/chillination') return;
+		event.source.postMessage('send back', event.origin)
+		console.log('received response:  send back',event.data);
+	});
+	
+	$(window).on("message", function(event){
+		console.log(event.origin);
+		if (event.origin !== "http://http://jservice.io/api/random?count=1") return;
+		console.log(event.data); // Logs {name: "Someone", avatar: "url.jpg"}
+	});
 
         setInterval(function() {
 	    	API.sendChat("!roulette");
