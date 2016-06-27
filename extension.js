@@ -52,10 +52,14 @@
 		if (event.origin !== domain) return;
 		console.log(event.data); // Logs {name: "Someone", avatar: "url.jpg"}
 	});
-*/
-        setInterval(function() {
-	    	API.sendChat("!roulette");
-	    }, 30 * 60000);
+	
+*/	function timeRoulette() {
+		setTimeout(function() {
+        		API.sendChat("!roulette");
+        		timeRoulette();
+		}, 30 * 60000);
+	}
+	timeRoulette();
 /*
 	var repans = rra = rraan = rraand = rras = rrasla = rradash = rradasp = rratta = rraora = rraorb = rracom = rraspa = null;
 
