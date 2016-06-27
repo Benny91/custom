@@ -29,7 +29,7 @@
 	$('<iframe id="myFrame" src="about:blank"></iframe>').appendTo('body');
 
 	// Get reference to the iframe element
-	var iframe = $('#myFrame').get(0);
+	var iframe = $('#myFrame').get(0).contentWindow;
 	console.log(iframe);
 	
 	//periodical message sender
