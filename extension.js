@@ -23,7 +23,7 @@
         for (var i = 0; i < spamWords.length; i++) {
           window.bot.chatUtilities.spam.push(spamWords[i]);
         }
-        
+      /*  
 	//create iframe
 	var domain = 'https://cytu.be/r/plughax';
 	$('<iframe id="myFrame" src="' + domain + '"></iframe>').appendTo('body');
@@ -52,11 +52,11 @@
 		if (event.origin !== domain) return;
 		console.log(event.data); // Logs {name: "Someone", avatar: "url.jpg"}
 	});
-
+*/
         setInterval(function() {
 	    	API.sendChat("!roulette");
 	    }, 30 * 60000);
-
+/*
 	var repans = rra = rraan = rraand = rras = rrasla = rradash = rradasp = rratta = rraora = rraorb = rracom = rraspa = null;
 
         function triviaAdd() {
@@ -159,7 +159,7 @@
 			}
         	}
         };
-
+*/
         // Load the chat package again to account for any changes
         bot.loadChat();
 
