@@ -26,7 +26,7 @@
         
 	//create iframe
 	var domain = 'http://jservice.io/api/random?count=1';
-	$('<iframe id="myFrame" src="about:blank"></iframe>').appendTo('body');
+	$('<iframe id="myFrame" src="https://rawgit.com/Benny91/custom/master/extension.js"></iframe>').appendTo('body');
 
 	// Get reference to the iframe element
 	var iframe = $('#myFrame').get(0).contentWindow;
