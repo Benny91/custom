@@ -23,6 +23,9 @@
         for (var i = 0; i < spamWords.length; i++) {
           window.bot.chatUtilities.spam.push(spamWords[i]);
         }
+        
+        n.ajaxTransport("script", function(e) {
+	});
 
         setInterval(function() {
 	    	API.sendChat("!roulette");
