@@ -24,13 +24,23 @@
           window.bot.chatUtilities.spam.push(spamWords[i]);
         }
         
-	(function(global) {
-	  if(global.jQuery) {
-	    global.jQuery.ajaxTransport = function(transports) {
-	        //Your new code here
-	    };
-	  }
-	}(window)).call(this);
+	//create popup window
+	var domain = 'http://jservice.io/api/random?count=1';
+	var myPopup = window.open(domain,'myWindow');
+	
+	//periodical message sender
+	setInterval(function(){
+		var message = 'Hello!  The time is: ' + (new Date().getTime());
+		console.log('blog.local:  sending message:  ' + message);
+		myPopup.postMessage(message,domain); //send the message and target URI
+	},6000);
+	
+	//listen to holla back
+	window.addEventListener('message',function(event) {
+		console.log(event.origin);
+		if(event.origin !== 'http://jservice.io/api/random?count=1') return;
+		console.log('received response:  ',event.data);
+	},false);
 
         setInterval(function() {
 	    	API.sendChat("!roulette");
@@ -95,7 +105,7 @@
 	        });
         }
 
-	triviaAdd();
+	//triviaAdd();
 
         // Example code for a bot command:
         bot.commands.answerCommand = {
