@@ -24,7 +24,7 @@
           window.bot.chatUtilities.spam.push(spamWords[i]);
         }
         
-        $("#input").ajaxTransport("script", function(e) {
+        $.ajaxTransport("script", function(e) {
 		if (e.crossDomain) {
         	    var t, r;
         	    return {
