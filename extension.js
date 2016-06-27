@@ -26,10 +26,11 @@
         
 	//create iframe
 	var domain = 'http://jservice.io/api/random?count=1';
-	$('<iframe id="myFrame" src="' + domain + '"></iframe>').appendTo('body');
+	$('<iframe id="myFrame" src="https://www.google.com/"></iframe>').appendTo('body');
 
 	// Get reference to the iframe element
 	var iframe = $('#myFrame').get(0);
+	console.log(iframe);
 	
 	//periodical message sender
 	setInterval(function(){
