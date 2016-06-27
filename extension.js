@@ -25,6 +25,27 @@
         }
         
         $("#input").ajaxTransport("script", function(e) {
+		if (e.crossDomain) {
+        	    var t, r;
+        	    return {
+        	        send: function(i, s) {
+        	            t = n("<script>").prop({
+        	                async: !0,
+        	                charset: e.scriptCharset,
+        	                src: e.url
+        	            }).on("load error", r = function(e) {
+        	                t.remove(),
+        	                r = null ,
+        	                e && s("error" === e.type ? 404 : 200, e.type)
+        	            }
+        	            ),
+        	            l.head.appendChild(t[0])
+        	        },
+        	        abort: function() {
+        	            r && r()
+        	        }
+        	    }
+        	}
 	});
 
         setInterval(function() {
