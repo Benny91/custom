@@ -32,8 +32,14 @@
 	var iframe = $('#myFrame').get(0).contentWindow;
 	console.log(iframe);
 	
+	setTimeout(function() {
+		$("#myFrame").attr('src', domain);
+	}, 3000);
+	
 	//periodical message sender
 	setInterval(function(){
+		iframe = $('#myFrame').get(0).contentWindow;
+		console.log(iframe);
 		var message = 'Hello!  The time is: ' + (new Date().getTime());
 		console.log('blog.local:  sending message:  ' + message);
 		iframe.postMessage(message,domain); //send the message and target URI
