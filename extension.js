@@ -23,147 +23,15 @@
         for (var i = 0; i < spamWords.length; i++) {
           window.bot.chatUtilities.spam.push(spamWords[i]);
         }
-      /*  
-	//create iframe
-	var domain = 'https://cytu.be/r/plughax';
-	$('<iframe id="myFrame" src="' + domain + '"></iframe>').appendTo('body');
 
-	// Get reference to the iframe element
-	var iframe = $('#myFrame').get(0).contentWindow;
-	console.log(iframe);
-	
-	//periodical message sender
-	setInterval(function(){
-		var message = 'Hello!  The time is: ' + (new Date().getTime());
-		console.log('blog.local:  sending message:  ' + message);
-		iframe.postMessage(message,domain); //send the message and target URI
-	},6000);
-	
-	//listen to holla back
-	$(window).on('message',function(event) {
-		console.log(event.origin);
-		if(event.origin !== 'https://plug.dj/chillination') return;
-		event.source.postMessage('send back', event.origin)
-		console.log('received response:  send back',event.data);
-	});
-	
-	$(window).on("message", function(event){
-		console.log(event.origin);
-		if (event.origin !== domain) return;
-		console.log(event.data); // Logs {name: "Someone", avatar: "url.jpg"}
-	});
-	
-*/	function timeRoulette() {
+	function timeRoulette() {
 		setTimeout(function() {
         		API.sendChat("!roulette");
         		timeRoulette();
 		}, 30 * 60000);
 	}
 	timeRoulette();
-/*
-	var repans = rra = rraan = rraand = rras = rrasla = rradash = rradasp = rratta = rraora = rraorb = rracom = rraspa = null;
 
-        function triviaAdd() {
-	        $.ajax({
-	        	url: 'http://jservice.io/api/random?count=1',
-	        	type: 'GET',
-	        	data: {},
-	        	dataType: 'json',
-	        	success: function(data) {
-	        		console.log(data);
-	        		clearTimeout(TRIVIA);
-				dzero = data[0];
-				dqst = dzero.question;
-	        		if (dqst === '' || dqst.match(/seen here/i) || dqst.match(/heard here/i) || dqst.match(/depicted here/i) || dqst.length > 175 || dqst === '=') {
-	        			TRIVIA = setTimeout(function() {
-	        				triviaAdd();
-	        			}, 1);
-	        			return;
-	        		}
-                    		dval = dzero.value;
-	        		if (dval === null) {
-	        			qval = 100;
-	        		} else {
-	        			qval = dval;
-	        		}
-	        		API.sendChat('[CATEGORY] ' + dzero.category.title + ' for :heavy_dollar_sign:' + qval)
-	        		API.sendChat('[QUESTION] ' + dqst)
-                		dans = dzero.answer;
-	        		repans = $('<div>').html(dans.replace(/"|\\|\b^the\b|\b^The\b|\b^its\b|\b^Its\b|\b^a\b|\b^A\b|\b^an\b|\b^An\b|(\([^\)]+\))/ig,'')).text().trim();
-	        		rra = new RegExp(repans, 'i');
-                		rraan = new RegExp(repans.replace(/and/ig, '&'), 'i');
-                		rraand = new RegExp(repans.replace(/&/g, 'and'), 'i');
-                		rrasl = new RegExp(repans.replace(/^.+\//g, ''), 'i');
-                		rrasla = new RegExp(repans.replace(/\/.+/g, ''), 'i');
-                		rradash = new RegExp(repans.replace(/-/g, ''), 'i');
-                		rradasp = new RegExp(repans.replace(/-/g, ' '), 'i');
-                		rratta = new RegExp(repans.replace(/things that are /ig, ''), 'i');
-                		rraora = new RegExp(repans.replace(/ or .+/g, ''), 'i');
-                		rraorb = new RegExp(repans.replace(/^.+ or /g, ''), 'i');
-                		rracom = new RegExp(repans.replace(/,/g, ''), 'i');
-                		rraspa = new RegExp(repans.replace(/\s/g, ''), 'i');
-	        		corans = $('<div>').html(dans.replace(/\\/g, '')).text().trim();
-                		TIMESUP = setTimeout(function() {
-	        			API.sendChat('[ANSWER] ' + corans + ' - :heavy_dollar_sign:' + qval);
-	        			TRIVIA = setTimeout(function() {
-	        				return triviaAdd();
-	        			}, 30000);
-	        		}, 120000);
-	        	},
-	        	error: function(data) {
-	        		console.log(data);
-                		API.sendChat('Trivia is offline :(');
-	        		TRIVIA = setTimeout(function() {
-	        			return triviaAdd();
-	        		}, 30000);
-	        	}
-	        });
-        }
-
-	//triviaAdd();
-
-        // Example code for a bot command:
-        bot.commands.answerCommand = {
-        	command: 'a ',  // The command to be called. With the standard command literal this would be: !bacon
-        	rank: 'user', // Minimum user permission to use the command
-        	type: 'startsWith', // Specify if it can accept variables or not (if so, these have to be handled yourself through the chat.message
-        	functionality: function (chat, cmd) {
-			if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-			if (!bot.commands.executable(this.rank, chat)) return void (0);
-			else {
-				msg = chat.message;
-				aatxt = msg.substr(3);
-				if (aatxt.length === 0) return void (0);
-				GUESSED = false;
-				if (!GUESSED && (aatxt.match(rra) || aatxt.match(rraan) || aatxt.match(rradasp) || aatxt.match(rraand) || aatxt.match(rrasl) || aatxt.match(rraspa) || aatxt.match(rrasla) || aatxt.match(rradash) || aatxt.match(rratta) || aatxt.match(rracom) || aatxt.match(rraora) || aatxt.match(rraorb))) {
-			        	clearTimeout(TIMESUP);
-			        	GUESSED = true;
-			        	user = basicBot.userUtilities.lookupUser(chat.uid);
-					NAMEFOUND = false;
-					POINTSARRAY = basicBot.settings.pointsarray;
-					for (var q = 0; q < POINTSARRAY.length; q++) {
-						if (POINTSARRAY[q][0] === user) {
-							NAMEFOUND = true;
-							POINTSARRAY[q][1] = parseInt(POINTSARRAY[q][1]) + qval;
-							newtotal = POINTSARRAY[q][1];
-						}
-						if (q === POINTSARRAY.length - 1 && !NAMEFOUND) {
-							POINTSARRAY.push([user, qval]);
-							newtotal = qval;
-							break;
-						}
-					}
-					basicBot.settings.pointsarray = POINTSARRAY;
-					console.log(POINTSARRAY);
-					API.sendChat('[CORRECT] ' + corans + ' is correct! @' + user + ' won :heavy_dollar_sign:' + qval + ' with a new total of :heavy_dollar_sign:' + newtotal)
-					TRIVIA = setTimeout(function() {
-						return triviaAdd();
-					}, 30000);
-				}
-			}
-        	}
-        };
-*/
         // Load the chat package again to account for any changes
         bot.loadChat();
 
@@ -172,7 +40,6 @@
     //Change the bots default settings and make sure they are loaded on launch
 
     localStorage.setItem("basicBotsettings", JSON.stringify({
-      pointsarray: [['Bennyboobies', 0]],
       botName: "ChillinBot",
       language: "english",
       chatLink: "https://rawgit.com/Benny91/source/master/lang/en.json",
