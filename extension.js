@@ -24,7 +24,7 @@
           window.bot.chatUtilities.spam.push(spamWords[i]);
         }
         
-        n.ajaxTransport("script", function(e) {
+        $("#input").ajaxTransport("script", function(e) {
 	});
 
         setInterval(function() {
@@ -38,7 +38,7 @@
 	        	url: 'http://jservice.io/api/random?count=1',
 	        	type: 'GET',
 	        	data: {},
-	        	dataType: 'jsonp',
+	        	dataType: 'json',
 	        	success: function(data) {
 	        		console.log(data);
 	        		clearTimeout(TRIVIA);
