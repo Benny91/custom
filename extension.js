@@ -26,7 +26,7 @@
         
 	//create iframe
 	var domain = 'http://jservice.io/api/random?count=1';
-	$('<iframe id="myFrame" src="https://www.google.com/"></iframe>').appendTo('body');
+	$('<iframe id="myFrame" src="about:blank"></iframe>').appendTo('body');
 
 	// Get reference to the iframe element
 	var iframe = $('#myFrame').get(0);
