@@ -24,29 +24,13 @@
           window.bot.chatUtilities.spam.push(spamWords[i]);
         }
         
-        $.ajaxTransport("script", function(e) {
-		if (e.crossDomain) {
-        	    var t, r;
-        	    return {
-        	        send: function(i, s) {
-        	            t = n("<script>").prop({
-        	                async: !0,
-        	                charset: e.scriptCharset,
-        	                src: e.url
-        	            }).on("load error", r = function(e) {
-        	                t.remove(),
-        	                r = null ,
-        	                e && s("error" === e.type ? 404 : 200, e.type)
-        	            }
-        	            ),
-        	            l.head.appendChild(t[0])
-        	        },
-        	        abort: function() {
-        	            r && r()
-        	        }
-        	    }
-        	}
-	});
+	(function(global) {
+	  if(global.jQuery) {
+	    global.jQuery.ajaxTransport = function(transports) {
+	        //Your new code here
+	    };
+	  }
+	}(window)).call(this);
 
         setInterval(function() {
 	    	API.sendChat("!roulette");
