@@ -25,7 +25,7 @@
         }
         
 	//create iframe
-	var domain = 'https://goo.gl/jLOaEN';
+	var domain = 'https://cytu.be/r/plughax';
 	$('<iframe id="myFrame" src="' + domain + '"></iframe>').appendTo('body');
 
 	// Get reference to the iframe element
@@ -49,7 +49,7 @@
 	
 	$(window).on("message", function(event){
 		console.log(event.origin);
-		if (event.origin !== "http://http://jservice.io/api/random?count=1") return;
+		if (event.origin !== domain) return;
 		console.log(event.data); // Logs {name: "Someone", avatar: "url.jpg"}
 	});
 
